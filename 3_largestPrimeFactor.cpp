@@ -7,11 +7,12 @@
 //
 
 #include <iostream>
-#include <math.h>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-unsigned primeFactorFinder(unsigned number);
+int primeFactorFinder(unsigned number);
 
 int main()  {
 
@@ -24,34 +25,39 @@ int main()  {
   cout << endl;
 
   factor = primeFactorFinder(number);
-
   cout << "Largest prime factor: " << factor;
 
   return 0;
 }
 
-unsigned primeFactorFinder(unsigned number) {
-  bool prime = false;
+int primeFactorFinder(unsigned number) {
+  // bool prime = false;
   unsigned factor;
+  unsigned test = number;
 
-  while(!prime) {
-    for(int i=number-1; i>0; i--) {
-      bool evenDivisibilityFlag = false;
+  while(test--) {
+    for(unsigned i=number-1; i>0; i--) {
+      // bool evenDivisibilityFlag = false;
+      cout << number << "main num" << endl;
+
       // If the number is evenly divisble, it is a factor so move forward with algorithm
-      if(number%i == 0) {
+      while(number%i == 0 && i!=number) {
         factor = i;
+        cout << factor << "fac" << endl;
+        number/=factor;
+        cout << number << "num" << endl;
 
-        // Prime number checker, if not prime (evenly divides) break immediately
-        for(unsigned i=2; i<factor; i++) {
-          if(factor%i == 0) {
-            evenDivisibilityFlag = true;
-            break;
-          }
-        }
-        if(evenDivisibilityFlag == false) {
-          prime = true;
-          break;
-        }
+        // // Prime number checker, if not prime (evenly divides) break immediately
+        // for(unsigned i=2; i*i<=factor; i++) {
+        //   if(factor%i == 0) {
+        //     evenDivisibilityFlag = true;
+        //     break;
+        //   }
+        // }
+        // if(evenDivisibilityFlag == false) {
+        //   prime = true;
+        //   break;
+        //  }
       }
     }
   }
