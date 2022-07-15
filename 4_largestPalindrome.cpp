@@ -8,18 +8,49 @@
 
 #include <iostream>
 
+using namespace std;
+
+#define UPPER_LIMIT 999;
+#define LOWER_LIMIT 100;
+
 int main()  {
   int palindrome;
-  int limit = 1000;
-  int productOne = 100;
-  int productTwo = 100;
+  int upperLimit = UPPER_LIMIT;
+  int lowerLimit = LOWER_LIMIT;
+  int multiplicand, multiplier, product,temp;
 
-  for(int i=100; i<limit; i++)  {
-    for(int j=100; j<limit; j++)  {
-      //body here
+  for(int i=upperLimit; i>lowerLimit; i--)  {
+    multiplicand = i;
+    // cout << "loop 1" << endl;
+    for(int j=upperLimit; j>lowerLimit; j--)  {
+      int digit;
+      int reverse = 0;
+      // cout << "loop 2" << endl;
+      multiplier = j;
+      product = multiplicand*multiplier;
+      temp = product;
+      //create reverse of number
+      while(temp > 0) {
+        // cout << "loop 3" << endl;
+        digit = temp%10;
+        reverse = reverse*10;
+        reverse += digit;
+        temp /= 10;
+        palindrome = reverse;
+      }
+      cout << "Product = " << product << endl;
+      cout << "Reverse = " << palindrome << endl;
+      cout << "--------------------" << endl;
+      if(product == palindrome) {
+        break;
+      }
+    }
+    if(product == palindrome) {
+      break;
     }
   }
 
+  cout << palindrome << " Multiplicand: " << multiplicand << " Multiplier: " <<  multiplier;
 
   return 0;
 }
