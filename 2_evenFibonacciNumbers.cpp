@@ -2,9 +2,9 @@
 // Program name:      Even_Fibonacci_Numbers_Problem2.cpp
 // Last Modified:     06/07/2022
 // Last Modified By:  Lauren Escobedo
+// Language:          C++
 // Description:       Problem 2 of Project Euler
 //
-
 
 #include <iostream>
 
